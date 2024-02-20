@@ -1,6 +1,6 @@
 /*
 Composition with Double Lines and Yellow (unfinished)
- Piet Mondrian
+ Piet Mondrian (Dutch, 1872–1944)
  1934
  https://www.metmuseum.org/art/collection/search/665942
  */
