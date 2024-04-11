@@ -1,12 +1,9 @@
 /*
 
- Assignment 2, Prompt 2
- The Layered Drawing Piece
- 
- Write a program that makes something
- that builds up and changes over time,
- frame-by-frame, layer-by-layer.
- 
+ Assignment 2, Prompt 4
+  The Perfect Loop Piece
+  
+  Make a program that generates the frames for a GIF.
  */
 
 float a;                 // Angle of rotation
