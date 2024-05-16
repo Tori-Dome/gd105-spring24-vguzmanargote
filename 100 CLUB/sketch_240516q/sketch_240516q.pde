@@ -1,30 +1,48 @@
-int numSpirals = 20;
+ArrayList<Flower> flowers = new ArrayList<Flower>();
 
 void setup() {
   size(800, 600);
-  drawLayeredSpirals(numSpirals);
-}
-
-void drawLayeredSpirals(int numSpirals) {
-  for (int i = 0; i < numSpirals; i++) {
-    float startX = width / 2;
-    float startY = height / 2;
-    float startAngle = random(TWO_PI);
-    float angleIncrement = random(0.05, 0.2);
-    float numPoints = random(100, 500);
-    drawSpiral(startX, startY, startAngle, angleIncrement, numPoints);
+  for (int i = 0; i < 22; i++) {
+    flowers.add(new Flower(random(width), random(height)));
   }
 }
 
-void drawSpiral(float startX, float startY, float startAngle, float angleIncrement, float numPoints) {
-  beginShape();
-  float angle = startAngle;
-  for (int i = 0; i < numPoints; i++) {
-    float radius = i * 5;
-    float x = startX + cos(angle) * radius;
-    float y = startY + sin(angle) * radius;
-    vertex(x, y);
-    angle += angleIncrement;
+void draw() {
+  background(0);
+  for (Flower f : flowers) {
+    f.move();
+    f.display();
   }
-  endShape();
+}
+
+class Flower {
+  float x, y;
+  float speedX, speedY;
+  float radius;
+
+  Flower(float x, float y) {
+    this.x = x;
+    this.y = y;
+    speedX = random(-2, 2);
+    speedY = random(-2, 2);
+    radius = random(10, 50);
+  }
+
+  void move() {
+    x += speedX;
+    y += speedY;
+    if (x < 0 || x > width) speedX *= -1;
+    if (y < 0 || y > height) speedY *= -1;
+  }
+
+  void display() {
+    strokeWeight(3);
+    stroke(random(255), random(255), random(255));
+    float angle = TWO_PI / 5;
+    for (float a = 0; a < TWO_PI; a += angle) {
+      float sx = x + cos(a) * radius;
+      float sy = y + sin(a) * radius;
+      point(sx, sy);
+    }
+  }
 }
